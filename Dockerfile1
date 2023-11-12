@@ -1,0 +1,21 @@
+# Dockerfile1
+FROM python:3.10
+
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copiez le fichier requirements.txt 
+COPY requirements.txt /app/
+
+# Installez les dépendances de votre application Python
+RUN pip install -r requirements.txt
+
+# Copiez tout le contenu du répertoire "app" de votre projet dans le conteneur
+COPY app1/ /app/
+
+# Exposez le port sur lequel votre application Python écoute
+EXPOSE 8000
+
+# Commande pour exécuter votre application
+CMD ["python3", "app.py", "runserver", "0.0.0.0:8000"]
+
